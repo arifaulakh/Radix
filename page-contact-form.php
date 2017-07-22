@@ -1,0 +1,563 @@
+<?php
+    if (isset($_POST["submit"])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+        $human = intval($_POST['human']);
+        // title for email body
+        $from = 'Your Website Name Here'; 
+        // type in your email below
+        $to = 'baljitsingh3854@gmail.com'; 
+        // this will be the subject of all emails received from this form
+        $subject = 'Message from Your Website';
+        // how the email body will look
+        $body ="From: $name\n E-Mail: $email\n Message:\n $message";
+
+        // Check if name has been entered
+        if (!$_POST['name']) {
+            $errName = 'Please enter your name';
+        }
+        
+        // Check if email has been entered and is valid
+        if (!$_POST['email'] || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $errEmail = 'Please enter a valid email address';
+        }
+        
+        //Check if message has been entered
+        if (!$_POST['message']) {
+            $errMessage = 'Please enter your message';
+        }
+
+        // If there are no errors, send the email and send the user to success page
+        if (!$errName && !$errEmail && !$errMessage) {
+            if (mail ($to, $subject, $body, $from)) {
+                header('location: success.php');
+            } else {
+                $result='<div class="alert alert-danger">Sorry there was an error sending your message. Please try again later.</div>';
+            }
+        }
+            }
+?>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Investable | A Versatile Corporate, Business and Banking Template</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="Baljit Singh" /> 
+    <link rel="shortcut icon" href="favicon.ico"> 
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!--[if IE]><script src="assets/js/excanvas.js"></script><![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head> 
+<body>
+
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper" class="page-wrapper">
+
+        <!-- Main Content -->
+        <section class="main-content">
+
+            <!-- Navigation Bar -->
+            <nav id="main-nav" class="main-nav colored-menu">
+
+                <div class="container">
+
+                    <!-- Logo Container -->
+                    <div class="logo-container">
+                        <a href="index.html" class="logo">
+                            <i class="pe-7s-cash"></i>
+                            <p>Investable</p>
+                        </a>
+                    </div>
+
+                    <!-- Right Side Links -->
+                    <div class="right-links">
+
+                        <!-- Menu Start -->
+                        <ul id="menu" class="menu">
+
+                            <!-- Menu Item -->
+                            <li><a href="#" class="menu-item">Home</a></li>
+
+                            <!-- Menu Item -->
+                            <li><a href="#" class="menu-item has-drop">Pages</a>
+
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="page-about.html">About Us
+                                        <span>Get to know us</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="page-contact-form.html">Contact Us
+                                        <span>Get in touch</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="page-pricing.html">Pricing
+                                        <span>Check our low prices</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="page-services-grid.html">Services
+                                        <span>Find out everything we do</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="page-login.html">Login
+                                        <span>Manage your account</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="page-register.html">Register
+                                        <span>Sign up today</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="page-faq.html">FAQ
+                                        <span>Got questions? We have answers</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="page-404.html">404 Error
+                                        <span>Error page</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="page-maintenance.html">Maintenance
+                                        <span>Placeholder page</span></a>
+                                    </li>
+                                </ul>
+
+                            </li>
+
+                            <!-- Menu Item -->
+                            <li><a href="#" class="menu-item has-drop">Services</a>
+
+                                <ul class="dropdown">                             
+                                    <li><a href="page-services-grid.html">Services Grid
+                                    <span>services in a grid layout</span></a></li>
+                                    <li><a href="page-services-list.html">Services List
+                                    <span>services in a list layout</span></a></li>
+                                </ul>
+                                
+                            </li>
+
+                            <!-- Menu Item -->
+                            <li><a href="#" class="menu-item has-drop">Portfolio</a>
+
+                                <ul class="dropdown">
+                                    <li><a href="portfolio-3col.html">3 Column
+                                    <span>3 col portfolio layout</span></a></li>
+                                    <li><a href="portfolio-2col.html">2 Column
+                                    <span>2 col portfolio layout</span></a></li>
+                                    <li><a href="portfolio-2col-sidebar.html">2 Column Sidebar
+                                    <span>2 col portfolio layout w/ sidebar</span></a></li>
+                                    <li><a href="portfolio-single.html">Single Item
+                                    <span>case study of work</span></a></li>
+                                    
+                                </ul>
+
+                            </li>
+
+                            <!-- Menu Item -->
+                            <li><a href="#" class="menu-item has-drop">News</a>
+
+                                <ul class="dropdown">
+                                    <li><a href="blogs-3col.html">3 Column Timeline
+                                    <span>Blog timeline in 3 columns</span></a></li>
+                                    <li><a href="blogs-2col-sidebar.html">2 Column Timeline w/ sidebar
+                                    <span>2 column timeline with sidebar</span></a></li>
+                                    <li><a href="blogs-post-sidebar.html">Blog Post w/ Sidebar
+                                    <span>Display posts in a sidebar</span></a></li>
+                                    <li><a href="blogs-post-nosidebar.html">Blog Post No Sidebar
+                                    <span>Display posts without a sidebar</span></a></li>
+                                </ul>
+
+                            </li>
+
+                            <!-- Menu Item -->
+                            <li><a href="#" class="menu-item has-drop">Contact</a>
+
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="page-contact-form.html">Contact Us - 1
+                                        <span>With Contact Form</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="page-contact-noform.html">Contact Us - 2
+                                        <span>With only contact info</span></a>
+                                    </li>
+                                </ul>
+
+                            </li>
+
+                            <li>
+                                <a href="page-register.html" class="button button-sm button-primary">Sign Up</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+                
+            </nav>
+            <!--// Navigation Bar -->
+
+            <!-- Page title -->
+            <header class="page-title">
+
+                <div class="container">
+
+                    <div class="row">
+                        
+                        <ol class="breadcrumb">
+
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Pages</a></li>
+                            <li><a href="#" class="active">Contact Us</a></li>
+                            
+                        </ol>
+
+                        <h1>Contact Us</h1>
+                        <p>This is a contact page with a form.</p>
+
+                    </div><!-- //row -->
+                    
+                </div><!-- //container -->
+                
+            </header>
+            <!-- //page title -->
+
+            <!-- header links -->
+            <div class="header-links">
+
+                <div class="container">
+
+                    <div class="row">
+                        
+                        <ul>
+                            <li>
+                                <a href="page-contact-noform.html">Contact -1 (no form)</a>
+                            </li>
+                            <li>
+                                <a href="page-contact-form.html" class="active">Contact - 2 (with form)</a>
+                            </li>
+                            <li>
+                        </ul>
+
+                    </div><!-- //row -->
+                    
+                </div><!-- //container -->
+                 
+            </div>
+            <!-- //header links -->
+
+            <!-- Contact Info -->
+            <div class="pt80">
+ 
+                <div class="container">
+
+                    <div class="row">
+                        
+                        <div class="mb-sm-40 col-md-4">
+
+                            <div class="icon-box-2">
+
+                                <i class="pe-7s-headphones"></i>
+                                <h4>Call us at</h4>
+                                <a href="#" class="contact-detail">(800) 909-0898</a>
+                            
+                            </div><!-- //icon box -->
+
+                        </div><!-- //col -->
+
+                        <div class="mb-sm-40 col-md-4">
+
+                            <div class="icon-box-2">
+
+                                <i class="pe-7s-mail"></i>
+                                <h4>Email Us at</h4>
+                                <a href="#" class="contact-detail">support@mail.com</a>
+                            
+                            </div><!-- //icon box -->
+
+                        </div><!-- //col -->
+
+                        <div class="col-md-4">
+
+                            <div class="icon-box-2">
+
+                                <i class="pe-7s-map-marker"></i>
+                                <h4>Visit Us at</h4>
+                                <a href="#" class="contact-detail">350 5th ave. NY, 11345</a>
+                            
+                            </div><!-- //icon box -->
+
+                        </div><!-- //col -->
+
+                    </div><!-- //row -->
+                    
+                </div><!-- //container -->
+                 
+            </div>
+            <!-- //Contact Info -->
+
+            <!-- Section -->
+            <div class="pt80 pb80">
+
+                <div class="container">
+
+                    <div class="row">
+                        
+                        <h5 class="section-title col-xs-12">Shoot Us a Message</h5>
+
+                        <form class="contact-form col-md-6" role="form" method="post" action="">
+
+                            <div class="field col-sm-6 col-xs-12">
+                                <label>Your Name*</label>
+                                <input type="text" id="name" name="name" required="required" value="<?php echo htmlspecialchars($_POST['name']); ?>">
+                                <?php echo "<p class='text-danger'>$errName</p>";?>  
+                            </div>
+
+                            <div class="field col-sm-6 col-xs-12">
+                                <label>Your Email*</label>
+                                <input type="email" id="email" name="email" required="required" value="<?php echo htmlspecialchars($_POST['email']); ?>">
+                                <?php echo "<p class='text-danger'>$errEmail</p>";?>   
+                            </div>
+
+                            <div class="field col-xs-12">
+                                <label>Your Website (optional)</label>
+                                <input type="text" id="website" name="website" required="required" value="<?php echo htmlspecialchars($_POST['website']); ?>">
+                                <?php echo "<p class='text-danger'>$errEmail</p>";?>    
+                            </div>
+
+                            <div class="field col-xs-12">
+                                <label>Your Message*</label>
+                                <textarea rows="2" name="message" required="required"><?php echo htmlspecialchars($_POST['message']);?></textarea>
+                                <?php echo "<p class='text-danger'>$errMessage</p>";?>   
+                            </div>
+
+                            <div class="field col-xs-12">
+                                 <input id="submit" name="submit" type="submit" value="Send" class="button button-sm button-primary pull-right">
+                            </div>
+
+                            <div class="field">
+                                <?php echo $result; ?> 
+                            </div>
+                        </form>
+
+                        <div class="col-md-6">
+                            <p class="mb10">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo consequuntur magni dolores.</p>
+
+                            <p class="mb10">Donec finibus massa elit, non lobortis eros congue sit amet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus non dui sed elit pellentesque venenatis. Ut hendrerit massa nec quam dapibus, congue suscipit ligula ultricies. Vestibulum vel odio eu lacus porttitor consequat. </p>
+
+                            <p>Duis ut consequat erat. Pellentesque nunc nibh, venenatis scelerisque dolor non, rutrum dictum enim. Mauris a efficitur felis, vitae vestibulum quam. Nullam semper nunc vitae lorem pulvinar ullamcorper. Phasellus posuere ipsum ut mollis lacinia. Quisque venenatis magna ut egestas ornare. Aenean vel nisl consectetur, scelerisque mauris at, consectetur sapien. Duis ut erat risus. In sit amet dapibus est.</p>
+                        </div>
+
+                    </div><!-- //row -->
+                    
+                </div><!-- //container -->
+                 
+            </div>
+            <!-- //section -->
+
+            <!-- Section -->
+            <div class="bg-white pb80">
+
+                <div class="container">
+
+                    <div class="row">
+                        
+                        <div class="mb-sm-40 col-md-8 col-sm-12 col-xs-12">
+                            <h5 class="section-title">Frequently Asked Questions</h5>
+                            <div class="col-md-6 col-sm-6 col-xs-12 ques-col">
+                                <a href="#">Will I be able to upgrade my plan?</a>
+                                <a href="#">Will I be charged every month or every year? </a>
+                                <a href="#">Can I get a refund when I don't use the services?</a>
+                                <a href="#">How long is the free trials?</a>
+                                <a href="#">What is the best plan for a freelancer?</a>
+                                <a href="#">Can I make payments online?</a>
+                                <a href="#">How do I know what plan is for me?</a>
+                                <a href="#">Can I add more than one user to my account?</a>
+                                <a href="#">How do I cancel my account?</a>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 ques-col">
+                                <a href="#">How can I qualify for a lower rate?</a>
+                                <a href="#">What is the average rate of return for the fund?</a>
+                                <a href="#">How do I delete a user from my account?</a>
+                                <a href="#">Can I go from a monthly plan to an annual plan?</a>
+                                <a href="#">Are there any fees to cancel my plan?</a>
+                                <a href="#">How can I send a refferal link to a friend?</a>
+                                <a href="#">Will I receive my refferal credit in the same billing cycle?</a>
+                                <a href="#">What do I do if I miss a payment?</a>
+                                <a href="#">How can I make a payment?</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <dl class="accordion">
+                                <dt>
+                                    <a href="">Our Process</a>
+                                </dt>
+                                <dd>
+                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem es.
+                                </dd>
+                                <dt>
+                                    <a href="">Our Mission</a>
+                                </dt>
+                                <dd>
+                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.
+                                </dd>
+                                <dt>
+                                    <a href="">Our Unique Approach</a>
+                                </dt>
+                                <dd>
+                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo consequuntur magni dolores.
+                                </dd>
+                                <dt>
+                                    <a href="">Why Choose Us?</a>
+                                </dt>
+                                <dd>
+                                    Sed ut perspiciatis unde si architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.
+                                </dd>
+                            </dl><!--//accordion-->
+                        </div>
+
+                    </div><!-- //row -->
+                    
+                </div><!-- //container -->
+                 
+            </div>
+            <!-- //section -->
+
+            <!-- Section -->
+            <div class="cta-2 bg-img bg-img-3 color-overlay pt80 pb80">
+
+                <div class="container">
+
+                    <div class="table">
+
+                        <div class="row">
+                            
+                            <div class="col-md-8 col-md-offset-2">
+
+                                <span>Limited Time Offer</span>
+                                <h4 class="section-title">Contact Us Today and Get a Free 6 Month Subscription to Our Premium Newsletter.</h4>
+                                <p>Nunc cursus imperdiet tristique. Donec placerat maximus dignissim. Pellentesque interdum ligula id enim interdum ullamcorper. Vivamus ac mauris egestas nisl pharetra porttitor quis ut orci. Curabitur ullamcorper ex ut massa lobortis sagittis. Aliquam tincidunt elit ac risus sodales egestas.</p>
+                                
+                            </div>
+
+                        </div><!-- //row -->
+
+                    </div>
+                    
+                </div><!-- //container -->
+                 
+            </div>
+            <!-- //section -->
+
+
+            <!-- footer -->
+            <footer class="footer">
+
+                <div class="container">
+
+                    <div class="row">
+                        
+                        <div class="col-md-4 col-sm-12 col-xs-12 mb-sm-40">
+
+                            <a href="index.html" class="logo mb20">
+                                <i class="pe-7s-cash"></i>
+                                <p>Investable</p>
+                            </a>
+                            <p class="mb10">Nullam pellentesque mauris et lorem congue varius. Morbi iaculis diam leo, ut tempus tellus laoreet porttitor.</p>
+                            <ul class="list-sm">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col-md-2 col-sm-6 col-xs-12 mb-sm-40">
+
+                            <h6>Information</h6>
+
+                            <ul class="list-links">
+                                <li><a href="">About Us</a></li>
+                                <li><a href="">Our Process</a></li>
+                                <li><a href="">Careers</a></li>
+                                <li><a href="">Services</a></li>
+                            </ul>
+                            
+                        </div>
+
+                        <div class="col-md-2 col-sm-6 col-xs-12 mb-sm-40">
+
+                            <h6>Support</h6>
+
+                            <ul class="list-links">
+                                <li><a href="">FAQ</a></li>
+                                <li><a href="">Contact</a></li>
+                                <li><a href="">Prospectus</a></li>
+                                <li><a href="">Investor Relations</a></li>
+                            </ul>
+                            
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12 mb-sm-40">
+
+                            <h6>Subscribe</h6>
+                            <p>Sign up for all the latest news, daily stock picks, and investment advice from our team of pros.</p>
+                            <form action="" method="post" class="newsletter">
+                                <input type="email" name="newsletter" placeholder="Enter Your Email">
+                                <button><i class="fa fa-paper-plane"></i></button>
+                            </form>
+
+                        </div>
+
+                        <div class="col-xs-12 sub-footer">
+                            <p>Copyright &copy; 2016 OneClickPixels. All rights reserved.  <a href="https://icons8.com" target="_blank">Icon pack by Icons8</a></p>
+                            <ul class="list-cc">
+                                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/visa-48.png" title="Visa"></li>
+                                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/discover-48.png" title="Visa"></li>
+                                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/paypal-48.png" title="Visa"></li>
+                                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/am_ex-48.png" title="Visa"></li>
+                                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/google_wallet-48.png" title="Visa"></li>
+                                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/bitcoin-48.png" title="Visa"></li>
+                            </ul>
+                        </div>
+
+                    </div><!-- //row -->
+                    
+                </div><!-- //container -->
+                 
+            </footer>
+            <!-- //footer -->
+            
+
+        </section>
+        <!-- //Main Content -->
+
+    </div>
+    <!-- // Page Wrapper -->
+
+
+    <!-- Plugins -->
+    <script src="assets/js/jquery-3.0.0.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/modernizr.custom.js"></script>
+    <script src="assets/js/prettify.js"></script>
+    <script src="assets/js/classie.js"></script>
+    <script src="assets/js/jquery.slicknav.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/all.js"></script>
+
+
+</body>
+</html>
